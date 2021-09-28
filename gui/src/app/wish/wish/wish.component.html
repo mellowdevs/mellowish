@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{modalData.title ? modalData.title : 'New Wish'}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="modalForm">
+    <div class="form-group">
+      <input class="form-control" type="text" formControlName="title" placeholder="Title" [maxLength]="20">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" formControlName="detail" placeholder="Detail">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" pattern="\d*" maxlength="7" formControlName="price" placeholder="Price">
+    </div>
+    <div class="form-group d-flex flex-column">
+      <div class="d-flex">
+        <input class="form-control mr-1" type="text" formControlName="urlTitle" placeholder="URL Name" [maxLength]="30">
+        <input class="form-control" type="text" formControlName="urlValue" placeholder="URL" [maxLength]="100">
+        <button class="btn btn-primary ml-1" type="button" (click)="addUrl()"><i class="fa fa-check"></i></button>
+      </div>
+      <div class="added-urls d-flex flex-grow-1 justify-content-between mt-1" *ngFor="let url of urls; let i = index">
+        <a class="wish-url" target="_blank" href="{{url.value}}">{{url.title}}</a>
+        <button class="btn btn-danger ml-1" type="button" (click)="removeUrl(i)"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <div class="form-group d-flex flex-column">
+      <div class="d-flex">
+        <input class="form-control" type="text" formControlName="imageUrl" placeholder="Image Url">
+        <button class="btn btn-primary ml-1" type="button" (click)="addImageUrl()"><i class="fa fa-check"></i></button>
+      </div>
+      <div class="d-flex flex-grow-1 flex-wrap image-prev-container mt-1">
+        <span class="image-prev-span" *ngFor="let image of imageUrls; let i = index;">
+          <img class="image-preview" src="{{image}}" width="150" >
+          <button class="btn image-btn btn-default btn-circle" type="button" (click)="removeImage(i)"><i class="fa fa-trash"></i></button>
+        </span>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" *ngIf="modalData._id" (click)="deleteWish()" class="btn "><i class="fa fa-trash delete-btn"></i></button>
+  <button type="submit" [disabled]="modalForm.invalid" (click)="onSubmit()" class="btn btn-dark">Kaydet</button>
+</div>
+

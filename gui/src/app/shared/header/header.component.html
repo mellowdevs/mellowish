@@ -1,0 +1,17 @@
+<div class="header">
+  <div class="container">
+    <div class="header-flex d-flex flex-row flex-grow-1 justify-content-between align-content-center">
+      <div class="header-left align-self-center">
+        <h2><a class="header-title" href="">Mellowish</a></h2>
+      </div>
+      <div class="header-right align-self-center" *ngIf="!authService.isAuthenticated()">
+        <a class="btn header-text" routerLink="/login">Login</a>
+        <a class="btn header-text"routerLink="/register">Register</a>
+      </div>
+      <div class="header-right align-self-center" *ngIf="authService.isAuthenticated()">
+        <a class="btn header-text" (click)="modalService.open(budgetModal, {}, 'md')" *ngIf="authService.isAuthenticated()">Budget</a>
+        <a class="btn header-text" (click)="logout()">Log Out</a>
+      </div>
+    </div>
+  </div>
+</div>

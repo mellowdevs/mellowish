@@ -1,0 +1,25 @@
+<div class="container justify-content-center align-middle centered-content">
+  <div class="card shadow-lg login-card">
+    <div class="card-header text-center register-header"><h5 class="card-title register-title">LOGIN</h5></div>
+    <div class="card-body register-card-body">
+      <form class="register-form" [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+        <div class="form-group ">
+          <label for="username" class="sr-only"></label>
+          <input type="text" [formControlName]="'username'" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+        </div>
+        <div class="form-group">
+          <label for="password" class="sr-only"></label>
+          <input type="password" [formControlName]="'password'" id="password" class="form-control " placeholder="Password" required="" autofocus="">
+        </div>
+        <div class="register-buttons text-center">
+          <button class="btn register-btn" type="submit">
+            <span>Login</span>
+          </button>
+        </div>
+        <div class="success-message text-center">
+          <span [style]="{'color': success ? '#53917E' : '#FF0022'}">{{message}}</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
