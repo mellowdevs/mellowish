@@ -1,0 +1,368 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Poppins:wght@300&display=swap');
+
+/** CONSTANTS **/
+$white: #ffffff;
+$light: #F9C784;
+$dark: #4E598C;
+$light-orange: #FCAF58;
+$dark-orange: #FCAF58;
+$text-dark:#4C5B61;
+$text-light: #E0E0E0;
+
+/** DEFAULT **/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  color: #555;
+  font-family: Poppins, 'Lato', 'Arial', sans-serif;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+}
+body {
+  background-image: url('./assets/bg.png') !important;
+  background-size: cover;
+  image-rendering: high-quality;
+  overflow-x: auto;
+  background-repeat: repeat-x;
+}
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.card, .btn {
+  transition: all 0.2ms ease-in-out;
+}
+.card:active, .btn:active {
+  transform: scale(0.9);
+}
+
+input[type = "text"],
+input[type = "number"],
+input[type = "email"],
+input[type = "password"] {
+  border-color: $dark;
+}
+input[type = "text"]:focus,
+input[type = "number"]:focus,
+input[type = "email"]:focus,
+input[type = "password"]:focus {
+  outline: none !important;
+  border-color: $dark-orange;
+  box-shadow: 0 0 10px $dark-orange;
+}
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+}
+/** HEADER **/
+.header {
+  width: 100vw;
+  padding: 5px 10px;
+  background-color: $dark;
+}
+
+.header-title {
+  font-family: 'Open Sans Condensed';
+  font-size: 30px;
+  text-transform: uppercase;
+  color: $text-light;
+  text-decoration: none;
+}
+.header-title:hover {
+  color: $text-light;
+  text-decoration: none;
+}
+
+.header-text {
+  color: $light !important;
+  text-decoration: none;
+}
+
+/** REGISTER **/
+
+.register-card {
+  border-radius: 20px;
+  width:90% !important;
+  max-width: 500px;
+  margin: auto;
+  height: 70% !important;
+  max-height: 670px !important;
+
+}
+
+.register-header {
+  border-radius: 20px 20px 0px 0px !important;
+  background-color: darken($white, 1);
+}
+
+.register-title {
+  font-size: 1.7rem;
+  color: $dark;
+}
+
+.register-form input[type = "text"],
+.register-form input[type = "email"],
+.register-form input[type = "password"] {
+  border-radius: 5px;
+  width: 70%;
+  transition: width 0.5s ease-in-out;
+  margin: auto;
+  display: block;
+}
+.register-form input[type = "text"]:focus,
+.register-form input[type = "email"]:focus,
+.register-form input[type = "password"]:focus {
+  width: 75%;
+}
+
+.register-btn {
+  color: $light-orange;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.register-btn span {
+  transition: all 0.3s;
+}
+
+.register-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: $dark-orange;
+  border-bottom-color: $dark-orange;
+  transform: scale(0.1, 1);
+}
+
+.register-btn:hover span {
+  letter-spacing: 2px;
+  color: $dark !important;
+}
+
+.register-btn:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.register-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: $dark-orange, 0.1;
+}
+
+.register-btn:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}
+
+/** LOGIN **/
+.login-card {
+  border-radius: 20px;
+  width:90% !important;
+  max-width: 500px;
+  margin: auto;
+  height: 50% !important;
+  max-height: 670px !important;
+}
+
+/** DASHBOARD **/
+.dashboard-container{
+  height: 90vh;
+  overflow-y: auto;
+}
+.dashboard-container::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.dashboard-container::-webkit-scrollbar-track {
+  background: none;
+}
+
+.dashboard-container::-webkit-scrollbar-thumb {
+  background-color: $text-dark;
+  border-radius: 2px;
+  border: none;
+}
+
+.delete-category-btn{
+  margin: 20px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
+.delete-icon{
+  color: $text-light;
+  font-size: 2em;
+  transition: all 0.5s ease-in-out;
+}
+.delete-icon:hover {
+  transform: rotate(-18deg);
+}
+
+.category-group {
+  background: rgba($text-dark, 0.1);
+  min-width: 270px;
+  max-width: 270px;
+  margin-right: 10px;
+  max-height: 400px;
+  height: fit-content;
+  overflow-y: auto;
+  border-radius: 5px;
+  border: none;
+}
+.category-group::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.category-group::-webkit-scrollbar-track {
+  background: none;
+}
+
+.category-group::-webkit-scrollbar-thumb {
+  background-color: $text-dark;
+  border-radius: 2px;
+  border: none;
+}
+.category-content{
+  min-height: 200px;
+  max-width: fit-content;
+}
+
+.category-btn, .new-category-btn{
+  height: 50px !important;
+  background-color: $white !important;
+  border: none !important;
+  border-radius: 7px;
+  overflow-wrap: anywhere;
+}
+.category-btn{
+  min-width: 250px;
+  max-width: 250px;
+}
+
+.new-category-btn{
+  min-width: 250px !important;
+}
+.category-btn:hover, .new-category-btn:hover,{
+  box-shadow: 0px 0px 10px $dark !important;
+  background-color: $white !important;
+  color: $dark !important;
+}
+
+.wish-card, .new-wish-btn{
+  min-width: 200px !important;
+  max-width: 300px;
+  cursor: pointer;
+  border-radius: 7px;
+  border: none !important;
+}
+.wish-card{
+  height: 90px;
+}
+.new-wish-btn {
+  height: 75px;
+}
+.wish-card:hover, .new-wish-btn:hover{
+  box-shadow: 0px 0px 10px $light-orange !important;
+  background-color: $white !important;
+  color: black !important;
+}
+.new-wish-btn{
+  color: $dark-orange;
+}
+.wish-title{
+  color: $dark-orange;
+  overflow-wrap: anywhere;
+}
+.wish-price{
+  color: $text-dark;
+  overflow-wrap: anywhere;
+}
+.delete-btn {
+  color: $dark-orange !important;
+}
+.wish-url{
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.wish-url:hover {
+  text-decoration: underline;
+}
+
+.image-prev-span{
+  float: left;
+  position: relative;
+}
+
+.image-btn{
+  opacity: 0.35;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.image-preview {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -moz-transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+.image-prev-container{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+.image-preview:hover {
+  opacity: 0.5;
+}
+.image-btn:hover {
+  opacity: 1;
+}
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 575px) {
+
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

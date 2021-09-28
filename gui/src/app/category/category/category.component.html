@@ -1,0 +1,18 @@
+  <div class="modal-header">
+    <h4 class="modal-title">{{modalData.name ? modalData.name : 'New Category'}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="modalForm">
+      <div class="form-group d-flex">
+      <input class="form-control" type="text" formControlName="name" [maxLength]="20" [placeholder]="modalData.name ? '' : 'Category Name'">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" *ngIf="modalData._id" (click)="deleteCategory()" class="btn "><i class="fa fa-trash delete-btn"></i></button>
+    <button type="submit" [disabled]="modalForm.invalid" (click)="onSubmit()" class="btn btn-dark">Kaydet</button>
+  </div>
+

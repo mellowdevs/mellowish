@@ -1,0 +1,27 @@
+<div class="modal-header">
+  <h4 class="modal-title">My Budget</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="total-container m-1">
+    <span class="d-flex flex-grow-1">
+      <h6>Total amount needed for all the wishes: </h6>
+      <h6 class="ml-1 font-weight-bold">{{total}}</h6>
+    </span>
+  </div>
+  <div class="total-container m-1">
+    <span class="d-flex flex-grow-1">
+      <h6>Your current budget: </h6>
+      <h6 class="ml-1 font-weight-bold" [style]="budget > total ? {color: 'green'} : {color: 'red'}">{{budget}}</h6>
+    </span>
+  </div>
+  <form [formGroup]="modalForm">
+    <div class="form-group d-flex flex-grow-1 justify-content-between m-1">
+      <input class="form-control" type="number" formControlName="amount">
+      <button class="btn btn-warning ml-1 mr-1" (click)="updateUser(false)"><i class="fa fa-minus"></i></button>
+      <button class="btn btn-success" (click)="updateUser(true)"><i class="fa fa-plus"></i></button>
+    </div>
+  </form>
+</div>
